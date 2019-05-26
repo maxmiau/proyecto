@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
+  
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -20,6 +21,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    
 
     use RegistersUsers;
 
@@ -37,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -69,4 +71,5 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    
 }

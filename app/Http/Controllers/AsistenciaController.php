@@ -8,7 +8,7 @@ use App\Asistencia;
 class AsistenciaController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance para autentificacion.
      *
      * @return void
      */
