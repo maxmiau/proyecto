@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Asistencia;
 
 class AsistenciaController extends Controller
 {
@@ -13,7 +14,8 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        //
+        $asistencia = Asistencia::orderBy('nombre', 'asc')->paginate(10);
+        return view('asistencia.index')->with('asistencias', $asistencia);
     }
 
     /**
@@ -23,7 +25,7 @@ class AsistenciaController extends Controller
      */
     public function create()
     {
-        //
+        return view('asistencia.crear');
     }
 
     /**
@@ -34,7 +36,20 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+        ]);
+
+        // Crear registro
+        $asistencia = new Asistencia;
+        $asistencia->nombre = $request->input('nombre');
+        $asistencia->email = $request->input('email');
+        $asistencia->asistencias = $request->input('asistencia');
+        $asistencia->faltas = $request->input('falta');
+        $asistencia->comentarios = $request->input('comentario');
+        $asistencia->save();
+
+        return redirect('/asistencia')->with('success', 'Registro exitoso');
     }
 
     /**
@@ -45,7 +60,8 @@ class AsistenciaController extends Controller
      */
     public function show($id)
     {
-        //
+       $asistencia = Asistencia::find($id);
+       return view('asistencia.mostrar')->with('asistencia', $asistencia);
     }
 
     /**
@@ -56,7 +72,8 @@ class AsistenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $asistencia = Asistencia::find($id);
+        return view('asistencia.editar')->with('asistencia', $asistencia);
     }
 
     /**
@@ -68,7 +85,20 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+        ]);
+
+        // Crear registro
+        $asistencia = Asistencia::find($id);
+        $asistencia->nombre = $request->input('nombre');
+        $asistencia->email = $request->input('email');
+        $asistencia->asistencias = $request->input('asistencia');
+        $asistencia->faltas = $request->input('falta');
+        $asistencia->comentarios = $request->input('comentario');
+        $asistencia->save();
+
+        return redirect('/asistencia')->with('success', 'Registro modificado con exito');
     }
 
     /**
@@ -79,6 +109,8 @@ class AsistenciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $asistencia = Asistencia::find($id);
+        $asistencia->delete();
+        return redirect('/asistencia')->with('success', 'Registro eliminado con exito');
     }
 }

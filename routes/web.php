@@ -12,3 +12,8 @@
 */
 
 Route::get('/', 'PaginaController@index');
+
+Route::resource('asistencia', 'AsistenciaController');
+
+
+

@@ -10,10 +10,10 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Alumnos</a>
+        <a class="nav-link" href="/asistencia">Lista</a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#">Asistencias</a>
+      <li class="nav-item">
+        <a class="nav-link" href="/asistencia/create">Registrar Nuevo Alumno</a>
       </li>
    </ul>
   </div>
