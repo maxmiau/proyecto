@@ -28,12 +28,12 @@
               @else
                  <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                    <a class="nav-link" href="/asistencia/create">Nuevo registro</a>
+                    <a class="nav-link" href="/asistencia/create">Registrar Alumno</a>
                     </li>
                 </ul>
                  @if (Route::has('register'))
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('register') }}">{{ __('Registro') }}</a>
+                          <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar Usuario') }}</a>
                       </li>
                   @endif
                   <li class="nav-item dropdown">
