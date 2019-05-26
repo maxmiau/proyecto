@@ -8,6 +8,16 @@ use App\Asistencia;
 class AsistenciaController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -47,6 +57,7 @@ class AsistenciaController extends Controller
         $asistencia->asistencias = $request->input('asistencia');
         $asistencia->faltas = $request->input('falta');
         $asistencia->comentarios = $request->input('comentario');
+        $asistencia->user_id = auth()->user()->id;
         $asistencia->save();
 
         return redirect('/asistencia')->with('success', 'Registro exitoso');
@@ -96,6 +107,7 @@ class AsistenciaController extends Controller
         $asistencia->asistencias = $request->input('asistencia');
         $asistencia->faltas = $request->input('falta');
         $asistencia->comentarios = $request->input('comentario');
+        $asistencia->user_id = auth()->user()->id;
         $asistencia->save();
 
         return redirect('/asistencia')->with('success', 'Registro modificado con exito');

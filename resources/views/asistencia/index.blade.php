@@ -6,8 +6,7 @@
         @foreach($asistencias as $asistencia)
             <div class="card card-body bg-light">
                 <h3><a href="/asistencia/{{$asistencia->id}}">{{$asistencia->nombre}}</a></h3>
-                <small>Datos capturados el dia: {{$asistencia->created_at}}</small>
-                <small>Ultima modificaion: {{$asistencia->updated_at}}</small>
+                <small>Datos capturados el dia: {{$asistencia->created_at}} por {{$asistencia->user->name}}</small>
             </div>
     @endforeach 
     {{$asistencias->links()}}
